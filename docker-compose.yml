@@ -14,21 +14,21 @@ services:
     container_name: nginx
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    ports:
-      - "80:80"
+    # ports:
+    #   - "80:80"
     depends_on:
       - flask-app
     networks:
       - flask-network
-      # - traefik_apps
-    # labels:
-    #   - traefik.docker.network=traefik_apps
-    #   - traefik.enable=true
-    #   - traefik.http.routers.customer-service.rule=Host(`conversor-hora.mlibia.xyz`)
-    #   - traefik.http.services.customer-service.loadbalancer.server.port=8000
+      - traefik_apps
+    labels:
+      - traefik.docker.network=traefik_apps
+      - traefik.enable=true
+      - traefik.http.routers.customer-service.rule=Host(`conversor-hora.mlibia.xyz`)
+      - traefik.http.services.customer-service.loadbalancer.server.port=8000
 
 networks:
   flask-network:
     driver: bridge
-  # traefik_apps:
-  #   external: true
+  traefik_apps:
+    external: true
