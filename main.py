@@ -2,7 +2,13 @@ from pydantic import BaseModel
 from fastapi import FastAPI
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
+import os
+import telebot
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
+CHAT_ID = os.environ.get('CHAT_ID')
+bot = telebot.TeleBot(BOT_TOKEN)
 Base = declarative_base()
+
 
 class ItemSchema(BaseModel):
     repo_name: str
@@ -22,6 +28,11 @@ class Item(Base):
 
 app = FastAPI()
 
+def check_content(item: ItemSchema):
+    text= f"Repo name: {item.repo_name}\nGH username: {item.gh_username}\nContent repo: {item.content_repo}"
+    bot.send_message(CHAT_ID, text)
+
+
 def areSafeText(item: ItemSchema):
     return True
 
@@ -29,5 +40,6 @@ def areSafeText(item: ItemSchema):
 def addItem(item: ItemSchema):
     todoitem = Item(repo_name=item.repo_name,gh_username=item.gh_username, content_repo=item.content_repo)
     if areSafeText(item):
+        check_content(item)
         return todoitem
     return {"error": "Invalid input"}
