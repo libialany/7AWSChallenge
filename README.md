@@ -12,7 +12,7 @@ Desafíos de AWS
 ```mermaid
 graph TD;
     PUSH_PROJECT-->SERVER_VERIFY;
-    SERVER_VERIFY-->SOCIAL_MEDIA POST;
+    SERVER_VERIFY-->SOCIAL_MEDIA_POST;
 ```
 
 [inspiration](https://www.freecodecamp.org/news/join-the-100daysofcode-556ddb4579e4/)
