@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+  web:
+    build: nginx
+    ports:
+      - 8085:80
+    depends_on:
+      - app
