@@ -8,3 +8,12 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.actor }} is testing the ${{ github.repository }} repository."
+      - name: Make get Request
+        id: myRequest
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: "https://jsonplaceholder.typicode.com/todos/1"
+      - name: Show Response
+        run: |
+          echo ${{ steps.myRequest.outputs.response }}
+          echo ${{ steps.myRequest.outputs.status }}
