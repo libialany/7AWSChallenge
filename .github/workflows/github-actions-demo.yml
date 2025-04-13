@@ -8,12 +8,17 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.actor }} is testing the ${{ github.repository }} repository."
-      - name: Make get Request
+      - name: Make post Request
         id: myRequest
         uses: fjogeleit/http-request-action@v1
+        env: 
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         with:
-          url: "https://jsonplaceholder.typicode.com/todos/1"
-          method: GET
+          url: "https://cloudchallenge.mlibia.xyz/api/challenge"
+          method: POST
+          customHeaders: '{"Content-Type": "application/json"}'
+          data: '{"repo_name": "${{ env.GITHUB_REPOSITORY }}", "gh_username": "${{ env.GITHUB_ACTOR }}", "content_repo": "content"}'  
       - name: Show Response
         run: |
           echo ${{ steps.myRequest.outputs.response }}
