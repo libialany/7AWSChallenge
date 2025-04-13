@@ -40,7 +40,7 @@ class Item(Base):
 app = FastAPI()
 
 def is_content_completed(text: str):
-    pattern = r'result:\s*(https?://(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*))'
+    pattern = r'result:\s*!\[.*\]\((https?://[^\s)]+)\)'
     match = re.search(pattern, text)
     status = match is not None
     if status:
