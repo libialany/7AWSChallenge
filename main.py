@@ -62,13 +62,15 @@ def is_challenge_completed(item: ItemSchema, challenge: str):
 def check_content(item: ItemSchema):
     global challenges
     global text
+    repository = f"https://github.com/{item.repo_name}"
+    text = f"{item.gh_username} está trabajando en los desafíos {repository}\n"
     challenge_count = 0 
     for challenge in challenges:
         if is_challenge_completed(item, challenge):
-            text = "Felicidades! Has completado el desafío " + challenge
+            text+= "Felicidades! Has completado el desafío " + challenge
             challenge_count += 1
         else:
-            text = "No has completado el desafío " + challenge
+            text+= "No has completado el desafío " + challenge
             break
     if challenge_count == 5:
         text = "Felicidades! Has completado todos los desafíos"
