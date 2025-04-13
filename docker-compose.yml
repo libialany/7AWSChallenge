@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build: .
@@ -11,12 +9,3 @@ services:
       - 8085:80
     depends_on:
       - app
-    labels:
-      - traefik.http.routers.cloudchallenge.rule=Host(`cloudchallenge.mlibia.xyz`)
-      - traefik.http.services.cloudchallenge.loadbalancer.server.port=3012
-      - traefik.enable=true
-    networks:
-      - traefik_apps
-networks:
-  traefik_apps:
-    external: true
