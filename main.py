@@ -69,6 +69,7 @@ def check_content(item: ItemSchema):
             challenge_count += 1
         else:
             text = "No has completado el desafío " + challenge
+            break
     if challenge_count == 5:
         text = "Felicidades! Has completado todos los desafíos"
     bot.send_message(CHAT_ID, text)
