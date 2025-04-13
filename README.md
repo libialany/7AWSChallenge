@@ -14,5 +14,6 @@ graph TD;
     PUSH_PROJECT-->SERVER_VERIFY;
     SERVER_VERIFY-->SOCIAL_MEDIA_POST;
 ```
+![image](https://github.com/user-attachments/assets/519e53bf-011e-4dc7-ab64-4ee3639f6d33)
 
 [inspiration](https://www.freecodecamp.org/news/join-the-100daysofcode-556ddb4579e4/)
