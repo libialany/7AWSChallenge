@@ -1,4 +1,4 @@
-## Alojar un sitio web personal
+## Configurar alertas
 ### Requerimientos
 ### Pasos 
 ### Tu resultado

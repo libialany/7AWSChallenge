@@ -1,4 +1,4 @@
-## Alojar un sitio web personal
+## Alojamiento de sitios web estáticos
 ### Requerimientos
 ### Pasos 
 ### Tu resultado
