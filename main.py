@@ -77,7 +77,16 @@ def check_content(item: ItemSchema):
 def areSafeText(item: ItemSchema):
     return True
 
-@app.post("/api/todo")
+@app.get("/api/status")
+def status():
+    return JSONResponse(
+            status_code=200,
+            content={
+                "content": "El servicio está activo"
+            }
+        )
+
+@app.post("/api/challenge")
 def addItem(item: ItemSchema):
     global text
     if areSafeText(item):
@@ -88,4 +97,9 @@ def addItem(item: ItemSchema):
                 "content": text
             }
         )
-    return {"error": "Invalid input"}
+    return JSONResponse(
+            status_code=200,
+            content={
+                "content": "Error en la petición"
+            }
+        )
