@@ -6,6 +6,7 @@ services:
     env_file:
       - .env
     labels:
+      - traefik.docker.network=traefik_apps
       - traefik.http.routers.cloudchallenge.rule=Host(`cloudchallenge.mlibia.xyz`)
       - traefik.http.services.cloudchallenge.loadbalancer.server.port=8000
       - traefik.enable=true
