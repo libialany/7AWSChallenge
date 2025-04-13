@@ -5,13 +5,9 @@ services:
     build: .
     env_file:
       - .env
-  web:
-    build: nginx
-    depends_on:
-      - app
     labels:
       - traefik.http.routers.cloudchallenge.rule=Host(`cloudchallenge.mlibia.xyz`)
-      - traefik.http.services.cloudchallenge.loadbalancer.server.port=80
+      - traefik.http.services.cloudchallenge.loadbalancer.server.port=8000
       - traefik.enable=true
     networks:
       - traefik_apps
