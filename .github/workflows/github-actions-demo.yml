@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.actor }} is testing the ${{ github.repository }} repository."
-      - name: Make post Request
+      - run: echo "💡 ${{ github.actor }} esta realizando el reto en el repositorio ${{ github.repository }}"
+      - name: Send request to the API
         id: myRequest
         uses: fjogeleit/http-request-action@v1
         env: 
@@ -19,7 +19,7 @@ jobs:
           method: POST
           customHeaders: '{"Content-Type": "application/json"}'
           data: '{"repo_name": "${{ env.GITHUB_REPOSITORY }}", "gh_username": "${{ env.GITHUB_ACTOR }}", "content_repo": "content"}'  
-      - name: Show Response
+      - name: Show Response API 
         run: |
           echo ${{ steps.myRequest.outputs.response }}
           echo ${{ steps.myRequest.outputs.status }}
